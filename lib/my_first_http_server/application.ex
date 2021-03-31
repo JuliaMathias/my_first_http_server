@@ -10,6 +10,7 @@ defmodule MyFirstHttpServer.Application do
     children = [
       # Starts a worker by calling: MyFirstHttpServer.Worker.start_link(arg)
       # {MyFirstHttpServer.Worker, arg}
+      {Plug.Cowboy, scheme: :http, plug: MyFirstHttpServer.Server, options: [port: 4001]}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
