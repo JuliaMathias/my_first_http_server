@@ -12,8 +12,8 @@ defmodule MyFirstHTTPServer.MyProcess do
 
   def loop do
     receive do
-      :hello ->
-        IO.puts("Received :hello")
+      {from, :hello} when is_pid(from) ->
+        send(from, :world)
         loop()
 
       :exit ->
